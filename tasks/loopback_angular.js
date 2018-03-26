@@ -32,7 +32,8 @@ module.exports = function(grunt) {
     // Merge task-specific and/or target-specific options with these defaults.
     var options = this.options({
       ngModuleName: 'lbServices',
-      apiUrl: undefined
+      apiUrl: undefined,
+      authHeader: undefined,
     });
 
     var appFile = options.input;
@@ -56,6 +57,7 @@ module.exports = function(grunt) {
     }
 
     options.apiUrl = options.apiUrl || app.get('restApiRoot') || '/api';
+    options.authHeader = options.authHeader || 'authorization';
 
     grunt.log.writeln('Generating %j for the API endpoint %j',
       options.ngModuleName,
